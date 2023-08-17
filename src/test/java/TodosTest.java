@@ -71,7 +71,7 @@ public class TodosTest {
         Assertions.assertArrayEquals(actual, expected);
 
     }
-
+// Находится 0 задач
     @Test
     public void shouldNotFindArrayTaskEpic() {
         String[] subtasks = {"Анальгин", "Клевер", "Ромашка", "Липа"};
@@ -81,7 +81,27 @@ public class TodosTest {
         todos.add(epic);
 
         Task[] expected = {};
-        Task[] actual = todos.search("Нет совпадений");
+        Task[] actual = todos.search("Задачи не найдены");
+        Assertions.assertArrayEquals(actual, expected);
+
+    }
+    // Находится несколько задач.
+    @Test
+    public void shouldNotFindArraySomeTasks() {
+        String[] subtasks = {"Анальгин", "Клевер", "Ромашка", "Липа"};
+        Epic epic = new Epic(55, subtasks);
+        Meeting meeting = new Meeting(
+                555,
+                "Купить Анальгин",
+                "Покупки",
+                "Сегодня вечером"
+        );
+
+        Todos todos = new Todos();
+        todos.add(epic);
+        todos.add(meeting);
+        Task[] expected = {epic, meeting};
+        Task[] actual = todos.search("Анальгин");
         Assertions.assertArrayEquals(actual, expected);
 
     }
