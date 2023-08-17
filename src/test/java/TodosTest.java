@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 
 
 public class TodosTest {
+    //Находятся по одной задаче
     @Test
     public void shouldAddThreeTasksOfDifferentType() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
